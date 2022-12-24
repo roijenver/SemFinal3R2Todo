@@ -28,7 +28,7 @@ class _PageOneState extends State<PageOne> {
           child: const Icon(Icons.add),
         ),
         body: FutureBuilder<List<Todo>?>(
-          future: DbHelper.getAllTodo(),
+          future: dbHelper.getAllTodo(),
           builder: (context, AsyncSnapshot<List<Todo>?> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();
@@ -43,7 +43,7 @@ class _PageOneState extends State<PageOne> {
                     todo: snapshot.data![index],
                     onTap: () async {
                       await Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const FormPage()));
+                          MaterialPageRoute(builder: (context) => FormPage(todo: snapshot.data![index],)));
                       setState(() {});
                     },
                     onLongPress: () async {
@@ -56,7 +56,7 @@ class _PageOneState extends State<PageOne> {
                               actions: [
                                 ElevatedButton(
                                   onPressed: () async {
-                                    await DbHelper
+                                    await dbHelper
                                         .deleteTodo(snapshot.data![index]);
                                     Navigator.pop(context);
                                     setState(() {});

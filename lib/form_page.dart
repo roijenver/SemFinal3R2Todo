@@ -54,9 +54,9 @@ class FormPage extends StatelessWidget {
 
                       final Todo model = Todo(title: title, description: description, id: todo?.id);
                       if(todo == null){
-                        await DbHelper.addTodo(model);
+                        await dbHelper.addTodo(model);
                       }else{
-                        await DbHelper.updateTodo(model);
+                        await dbHelper.updateTodo(model);
                       }
 
                       Navigator.pop(context);

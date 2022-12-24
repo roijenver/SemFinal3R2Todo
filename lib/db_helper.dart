@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'classes.dart';
 
-class DbHelper {
+class dbHelper {
   static const int _version = 1;
   static const String _dbName = 'Todo.db';
 
